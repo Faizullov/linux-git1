@@ -1,2 +1,2 @@
 # linux-git1
-[greetings](https://github.com/Faizullov/linux-git1/blob/6e9e0f8525be75a0a9954080a4b37d9901e14031/greetings.py)  
+[greetings.py](greetings.py) https://github.com/Faizullov/linux-git1/blob/6d8b40622894476bbbb915c6832b7ce823227c84/greetings.py  
