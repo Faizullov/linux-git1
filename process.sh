@@ -29,5 +29,13 @@ do
     holiday=$(cat $1 | sed -n '/holiday inn/p' | sed -n '/^'$i'/p' | awk -F, 'BEGIN{x=0; cnt=0}$12!=0{x+=$12;cnt+=1}END{print x/cnt}')
     echo CLEANLINESS $i  $holiday $hil
 done
- 
+reset
+set xlabel "X" 
+set ylabel "Y"
+set grid
+set yrange [-1.1:1.1]
+set xrange[-pi:pi]
+set title "Gnuplot for habr" font "Helvetica Bold, 20"
+plot sin(x) title "sinux"  lc rgb "red", cos(x)  title "cosinus" lc rgb "green"
+
 
