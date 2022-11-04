@@ -26,7 +26,8 @@ q=$(cat $1 | awk -F, '{print $1}' | sed -r 's/(^.[^_]+).*/\1/' | sort | uniq)
 for i in $q
 do
     hil=$(cat $1 | sed -n '/hilton/p' | sed -n '/'$i'/p' | awk -F, 'BEGIN{x=0}{x+=$12}END{print x/NR}')
-    holiday=$(cat $1 | sed -n '/holiday inn/p' | sed -n '/'$i'/p' | awk -F, 'BEGIN{x=0}{x+=$12}END{print x/NR}')
+    holiday=$(cat $1 | sed -n '/holiday inn/p' | sed -n '/'$i'/p' | awk -F, 'BEGIN{x=0}{x+=$12}END{print x/(NR-1)}')
     echo CLEANLINESS $i  $holiday $hil
 done
+# cat $1 | sed -n '/holiday inn/p' | awk -F, '{print $12}' 
 
