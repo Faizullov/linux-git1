@@ -1,5 +1,6 @@
 #!/bin/bash
-cat $1 | awk -F, 'BEGIN{x=0}{x+=$18}END{print "RATING_AVG " x/NR}'
+rate=$(cat $1 | sed -n '/-1$/p' | awk -F, 'BEGIN{x=0}{x+=$18}END{print NR}')
+cat $1 | awk -F, 'BEGIN{x=41}{x+=$18}END{print "RATING_AVG " x/(NR-41)}'
 dat+=$(cat $1 | awk -F, '{print $1}' | sed -r 's/(^.[^_]+).*/\1/' | sort | uniq -c)
 tmp=0
 one=1
