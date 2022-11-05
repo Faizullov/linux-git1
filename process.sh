@@ -29,3 +29,11 @@ do
     holiday=$(cat $1 | sed -n '/holiday inn/p' | sed -n '/^'$i'/p' | awk -F, 'BEGIN{x=0; cnt=0}$12!=0{x+=$12;cnt+=1}END{print x/cnt}')
     echo CLEANLINESS $i  $holiday $hil
 done
+gnuplot -persist <<-EOFMarker
+    set terminal png size 300,400
+    set output 'Faizullov.png'
+    set datafile separator comma
+    f(x) = m*x + b
+    fit f(x) '/home/users/datamove/hotels.csv' using 12:18 via m,b
+    plot '/home/users/datamove/hotels.csv' using 12:18 title 'Dots' with points, f(x) title 'fit'
+EOFMarker
