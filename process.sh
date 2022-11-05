@@ -29,10 +29,3 @@ do
     holiday=$(cat $1 | sed -n '/holiday inn/p' | sed -n '/^'$i'/p' | awk -F, 'BEGIN{x=0; cnt=0}$12!=0{x+=$12;cnt+=1}END{print x/cnt}')
     echo CLEANLINESS $i  $holiday $hil
 done
-gnuplot
-echo set terminal png size 300,400
-echo set output 'w_vs_h.png'
-echo set datafile separator comma
-echo plot $1 using 12:18
-echo title 'Height vs. Weight' with points
-echo exit
