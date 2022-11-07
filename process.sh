@@ -31,14 +31,14 @@ do
 done
 clean=$(cat $1 | awk -F, '($12!=0) && ($18!="-1") && ($18!="-1.0") {print $12}')
 clean2=$(cat $1 | awk -F, '($12!=0) && ($18!="-1") && ($18!="-1.0") {print $18}')
-cat $1 | awk -F, '$18 > 0{print $18 "," $12}' >> '/tmp/faiz17.csv'
+cat $1 | awk -F, '$18 > 0{print $18 "/" $12}' >> '/tmp/faiz20.csv'
 #echo $tmp
 gnuplot << EOP
     set terminal png size 300,400
     set output 'out1.png'
-    set datafile separator  comma
+    set datafile separator "/"
     f(x) = m*x + b
-    fit f(x) '/tmp/faiz17.csv' using 2:1 via m,b
-    plot '/tmp/faiz17.csv' using 2:1 title 'Cleanliness' with points, f(x) title 'fit'
+    fit f(x) '/tmp/faiz20.csv' using 2:1 via m,b
+    plot '/tmp/faiz20.csv' using 2:1 title 'Cleanliness' with points, f(x) title 'fit'
 EOP
 
