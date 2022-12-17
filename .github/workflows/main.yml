@@ -29,4 +29,5 @@ jobs:
           pip install scikit-learn
           
       - name: Run unit tests
-        run: python -m pytest --import-mode=append project2/tests/
+        run: python -m pytest --import-mode=append check_tst/tests.py
+
