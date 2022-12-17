@@ -1,25 +1,32 @@
-name: Run tests on any Push event
-on:
-  push:
-   
+name: Test
+
+on: [push]
+
 jobs:
-  check-code:
+  build:
+    strategy:
+      matrix:
+        python-version: ["3.8"]
     runs-on: ubuntu-latest
+    
     steps:
-     - uses: actions/checkout@master
-     - uses: actions/setup-python@v1
-       with:
-         python-version: '3.8'
-         architecture: 'x64'
-     - name: Set up Python ${{ matrix.python-version }}
-       uses: actions/setup-python@v1
-       with:
-        python-version: ${{ matrix.python-version }}
-     - name: Install requirements
-       run: |
-        python -m pip install --upgrade pip
-        pip install -r project2/requirements.txt
-     - name: Run tests
-       run: python -m pytest --import-mode=append project2/check_tst/
-#      - name: Tests report
-#        run: coverage report
+      - name: Checkout
+        uses: actions/checkout@v2
+        with:
+          fetch-depth: 0
+              
+      - name: Set up Python ${{ matrix.python-version }}
+        uses: actions/setup-python@v1
+        with:
+          python-version: ${{ matrix.python-version }}
+          
+      - name: Install dependencies
+        run: |
+          python -m pip install --upgrade pip
+          pip install pytest
+          pip install numpy
+          pip install scipy
+          pip install scikit-learn
+          
+      - name: Run unit tests
+        run: python -m pytest --import-mode=append project2/check_tst/
