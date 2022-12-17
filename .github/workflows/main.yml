@@ -26,6 +26,7 @@ jobs:
           pip install pytest
           pip install numpy
           pip install scipy
+          pip install time
           pip install scikit-learn
           
       - name: Run unit tests
