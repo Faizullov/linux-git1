@@ -8,17 +8,17 @@ import time
 import pytest
 
 
-def test_function():
-    loss_function = BinaryLogisticLoss(l2_coef=1.0)
-    X = np.array([
-        [1, 2],
-        [3, 4],
-        [-5, 6]
-    ])
-    y = np.array([-1, 1, 1])
-    w = np.array([1, 2, 3])
-    npt.assert_almost_equal(loss_function.func(X, y, w), 16.00008, decimal=5)
-
+# def test_function():
+#     loss_function = BinaryLogisticLoss(l2_coef=1.0)
+#     X = np.array([
+#         [1, 2],
+#         [3, 4],
+#         [-5, 6]
+#     ])
+#     y = np.array([-1, 1, 1])
+#     w = np.array([1, 2, 3])
+#     npt.assert_almost_equal(loss_function.func(X, y, w), 16.00008, decimal=5)
+#
 
 def test_function_negative_inf_values():
     loss_function = BinaryLogisticLoss(l2_coef=0.0)
