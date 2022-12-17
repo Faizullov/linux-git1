@@ -20,6 +20,6 @@ jobs:
         python -m pip install --upgrade pip
         pip install -r project2/requirements.txt
      - name: Run tests
-       run: coverage run src/tests/tests.py
+       run: python -m pytest --import-mode=append project2/tests/
 #      - name: Tests report
 #        run: coverage report
