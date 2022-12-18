@@ -21,7 +21,7 @@ import pytest
 #
 
 def test_function_negative_inf_values():
-    loss_function = BinaryLogisticLoss(l2_coef=0.0)
+    loss_function = BinaryLogisticLoss(l2_c=0.0)
     X = np.array([
         [10 ** 5],
         [-10 ** 5],
@@ -33,7 +33,7 @@ def test_function_negative_inf_values():
 
 
 def test_function_positive_inf_values():
-    loss_function = BinaryLogisticLoss(l2_coef=0.0)
+    loss_function = BinaryLogisticLoss(l2_c=0.0)
     X = np.array([
         [10 ** 2],
         [-10 ** 2],
@@ -45,7 +45,7 @@ def test_function_positive_inf_values():
 
 
 def test_gradient():
-    loss_function = BinaryLogisticLoss(l2_coef=1.0)
+    loss_function = BinaryLogisticLoss(l2_c=1.0)
     X = np.array([
         [1, 2],
         [3, 4],
@@ -72,7 +72,7 @@ def create_simple_dataset():
 
 def test_simple_classification_task():
     X, y = create_simple_dataset()
-    loss_function = BinaryLogisticLoss(l2_coef=0.1)
+    loss_function = BinaryLogisticLoss(l2_c=0.1)
     linear_model = LinearModel(
         loss_function=loss_function,
         batch_size=100,
@@ -88,7 +88,7 @@ def test_simple_classification_task():
 
 def test_logging():
     X, y = create_simple_dataset()
-    loss_function = BinaryLogisticLoss(l2_coef=0.1)
+    loss_function = BinaryLogisticLoss(l2_c=0.1)
     linear_model = LinearModel(
         loss_function=loss_function,
         batch_size=None,
@@ -123,7 +123,7 @@ def test_full_gd(step_alpha, step_beta, answer):
     y = np.array([-1, -1, -1, -1, 1, 1, 1, 1])
     w_0 = np.array([0.5, 0.1, 0.3, 0.5, 0.3, 0.5])
 
-    loss_function = BinaryLogisticLoss(l2_coef=5)
+    loss_function = BinaryLogisticLoss(l2_c=5)
     lm = LinearModel(
         loss_function=loss_function,
         step_alpha=step_alpha,
