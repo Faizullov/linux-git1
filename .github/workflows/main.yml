@@ -23,7 +23,7 @@ jobs:
        run: |
           for file in $(find project2/modules/ -name '*.py')
           do
-            pylint --disable=C0114,C0115,E0604 "$file" --fail-under=6.0;
+            pylint --disable=C0114,C0115,E0604 "$file" --fail-under=5.0;
           done
      - name: Run tests
        run: python -m pytest --import-mode=append project2/check_tst/tests.py
