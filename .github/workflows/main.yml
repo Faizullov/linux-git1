@@ -1,7 +1,9 @@
 name: Run tests on any Push event
 on:
   push:
+    branches: [ main ]
   pull_request:
+    branches: [ main ]
    
 jobs:
   check-code:
